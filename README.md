@@ -36,3 +36,7 @@ To use the plugin, press Ctrl+F3 together. This will make the collectible overla
 Pressing F3 on its own will cause the collectible tracker to toggle between global and level counts for all collectibles where having separate values makes sense.
 
 ---
+
+## Special Thanks
+
+Thanks to [Kana (ElusiveFluffy)](https://github.com/ElusiveFluffy) for the architecture of TygerFramework, allowing these plugins to be created.

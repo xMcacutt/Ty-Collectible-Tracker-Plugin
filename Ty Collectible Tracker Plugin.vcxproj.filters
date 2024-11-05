@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{941d651e-6768-4949-b95d-1aeab473a0aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\TygerFramework">
+      <UniqueIdentifier>{4f90f22e-d93b-4cdc-a08d-daabd272e112}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\TygerMemory">
+      <UniqueIdentifier>{c79a2dd5-91ba-4f52-826c-bd38350a12e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\imgui">
+      <UniqueIdentifier>{370ccb53-ca20-436e-99d9-08fe2c1a4254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\imgui\backends">
+      <UniqueIdentifier>{60748675-8d38-483a-8b19-9254a40328a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\stb_image">
+      <UniqueIdentifier>{250de81a-40fe-4db9-ab34-d21006139a0c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TygerFramework\TygerFrameworkAPI.hpp">
+      <Filter>include\TygerFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TygerFramework\TygerFrameworkAPI.h">
+      <Filter>include\TygerFramework</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imconfig.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imgui.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imgui_internal.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imstb_rectpack.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imstb_textedit.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\imstb_truetype.h">
+      <Filter>include\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\backends\imgui_impl_opengl3.h">
+      <Filter>include\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\backends\imgui_impl_opengl3_loader.h">
+      <Filter>include\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ImGui\backends\imgui_impl_win32.h">
+      <Filter>include\imgui\backends</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb_image\stb_image.h">
+      <Filter>include\stb_image</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\imgui.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\imgui_draw.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\imgui_tables.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\imgui_widgets.cpp">
+      <Filter>include\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\backends\imgui_impl_opengl3.cpp">
+      <Filter>include\imgui\backends</Filter>
+    </ClCompile>
+    <ClCompile Include="include\ImGui\backends\imgui_impl_win32.cpp">
+      <Filter>include\imgui\backends</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="include\TygerMemory\TygerMemory.lib">
+      <Filter>include\TygerMemory</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resource\Bilby.png" />
+    <Image Include="resource\Cog.png" />
+    <Image Include="resource\Frame.png" />
+    <Image Include="resource\OpalA.png" />
+    <Image Include="resource\OpalB.png" />
+    <Image Include="resource\OpalC.png" />
+    <Image Include="resource\RainbowScale.png" />
+    <Image Include="resource\Rang.png" />
+    <Image Include="resource\Talisman.png" />
+    <Image Include="resource\TE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+</Project>

@@ -77,6 +77,9 @@
     <ClInclude Include="include\stb_image\stb_image.h">
       <Filter>include\stb_image</Filter>
     </ClInclude>
+    <ClInclude Include="include\TyNumberFont.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

@@ -166,6 +166,7 @@
     <ClInclude Include="include\stb_image\stb_image.h" />
     <ClInclude Include="include\TygerFramework\TygerFrameworkAPI.h" />
     <ClInclude Include="include\TygerFramework\TygerFrameworkAPI.hpp" />
+    <ClInclude Include="include\TyNumberFont.hpp" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

@@ -15,6 +15,7 @@
 #include "totals.h"
 #include "level.h"
 #include "windows.h"
+#include "include/TyNumberFont.hpp"
 
 std::map<std::string, unsigned int> GUI::icons;
 
@@ -36,7 +37,15 @@ bool GUI::WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 void GUI::Initialize() {
 
     ImGui::CreateContext();
-    API::SetImGuiFont(ImGui::GetIO().Fonts);
+
+    ImFontAtlas* fonts = ImGui::GetIO().Fonts;
+    fonts->Clear();
+
+    ImFontConfig custom_icons{};
+    custom_icons.FontDataOwnedByAtlas = false;
+
+    fonts->AddFontFromMemoryCompressedTTF(TyNumberFont_compressed_data, TyNumberFont_compressed_size, 40);
+    fonts->Build();
 
     ImGuiIO& io = ImGui::GetIO();
     (void)io;
@@ -86,32 +95,39 @@ void GUI::DrawUI() {
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
 
-    float centeredY = (GUI::cachedWindowHeight > 0.0f) ?
-        (windowHeight - GUI::cachedWindowHeight) / 2 : 0.0f;
-    ImGui::SetNextWindowPos(ImVec2(75 * uiScale, centeredY), ImGuiCond_Always);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+    ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, { 5.0f, 5.0f });
+    ImGui::PushStyleColor(ImGuiCol_WindowBg, { 0.0f, 0.0f, 0.0f, 0.0f });
+
     ImGui::SetNextWindowBgAlpha(0.0f);
 
-    ImGui::Begin("##Overlay", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize |
-        ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoScrollbar |
-        ImGuiWindowFlags_NoInputs | ImGuiWindowFlags_NoDecoration);
+    ImGui::Begin((API::PluginName + " Overlay").c_str(), nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_AlwaysAutoResize);
 
-    ImGui::SetWindowFontScale(2.2 * uiScale);
-
-    GUI::cachedWindowHeight = ImGui::GetWindowSize().y;
+    ImGui::SetWindowFontScale(uiScale);
 
     auto totalType = GUI::showLevelCounts ? TotalType::Level : TotalType::Global;
 
     int count = 0;
     ImVec2 textSize;
     float textVerticalOffset;
+    ImVec2 shadowOffset = ImVec2(uiScale * 3.0f, uiScale * 3.0f);
+    ImVec4 shadowColor = ImVec4(0.0f, 0.0f, 0.0f, 1.0f);  
+    ImVec4 defaultColor = ImVec4(1.0f, 1.0f, 1.0f, 1.0f);  
+    ImVec2 originalPos;
 
     ImGui::Image((ImTextureID)(intptr_t)icons["thegg"], ImVec2(iconScale, iconScale));
     count = Totals::getCurrentThunderEggCount(totalType);
     textSize = ImGui::CalcTextSize(std::to_string(count).c_str());
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
-    ImGui::SameLine(); 
+    ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
+
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     ImGui::Image((ImTextureID)(intptr_t)icons["cog"], ImVec2(iconScale, iconScale));
     count = Totals::getCurrentCogCount(totalType);
@@ -119,7 +135,13 @@ void GUI::DrawUI() {
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
     ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
+
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     ImGui::Image((ImTextureID)(intptr_t)icons["bilby"], ImVec2(iconScale, iconScale));
     count = Totals::getCurrentBilbyCount(totalType);
@@ -127,7 +149,13 @@ void GUI::DrawUI() {
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
     ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
+
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     auto currentLevel = Level::getCurrentLevel();
     std::string opalType = "";
@@ -143,7 +171,13 @@ void GUI::DrawUI() {
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
     ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
+
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     ImGui::Image((ImTextureID)(intptr_t)icons["frame"], ImVec2(iconScale, iconScale));
     count = Totals::getCurrentFrameCount(totalType);
@@ -151,7 +185,13 @@ void GUI::DrawUI() {
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
     ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
+
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     ImGui::Image((ImTextureID)(intptr_t)icons["rang"], ImVec2(iconScale, iconScale));
     count = Totals::getCurrentRangCount();
@@ -159,7 +199,13 @@ void GUI::DrawUI() {
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
     ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
+
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     ImGui::Image((ImTextureID)(intptr_t)icons["talisman"], ImVec2(iconScale, iconScale));
     count = Totals::getCurrentTalismanCount();
@@ -167,9 +213,18 @@ void GUI::DrawUI() {
     textVerticalOffset = (iconScale - textSize.y) * 0.5f;
     ImGui::SameLine();
     ImGui::SetCursorPosY(ImGui::GetCursorPosY() + textVerticalOffset);
+    originalPos = ImGui::GetCursorPos();
+    ImGui::SetCursorPos(ImVec2(originalPos.x + shadowOffset.x, originalPos.y + shadowOffset.y));
+    ImGui::TextColored(shadowColor, "%d", count);
+    ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
 
+    ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
+
     ImGui::End();
+
+    ImGui::PopStyleColor();
+    ImGui::PopStyleVar(2);
 
     ImGui::Render();
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -180,7 +235,7 @@ bool GUI::ImGuiWantCaptureMouse() {
 }
 
 GLuint GUI::LoadTextureFromResource(int resource_id) {
-    auto hModule = GetModuleHandle(L"Ty Collectible Tracker Plugin.dll");
+    auto hModule = GetModuleHandle(std::wstring(API::PluginName.begin(), API::PluginName.end()).c_str());
 
     HRSRC hResource = FindResource(hModule, MAKEINTRESOURCE(resource_id), L"PNG");
     if (!hResource) {

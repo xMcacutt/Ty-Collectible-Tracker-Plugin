@@ -218,7 +218,6 @@ void GUI::DrawUI() {
     ImGui::TextColored(shadowColor, "%d", count);
     ImGui::SetCursorPos(originalPos);
     ImGui::Text("%d", count);
-
     ImGui::Dummy(ImVec2(0.0f, uiScale * 7.0f));
 
     ImGui::End();

@@ -12,9 +12,9 @@
   ],
   "conflicts": [
     "Archipelago Client",
-    "Tyger Utility",
+    "Tyger Utility"
   ],
   "author": "xMcacutt",
-  "download_url": "https://github.com/xMcacutt/Ty-Collectible-Tracker-Plugin/releases/latest/Ty.Collectible.Tracker.Plugin.zip"
+  "download_url": "https://github.com/xMcacutt/Ty-Collectible-Tracker-Plugin/releases/latest/Ty.Collectible.Tracker.Plugin.zip",
   "last_updated": "2025-03-02"
 }

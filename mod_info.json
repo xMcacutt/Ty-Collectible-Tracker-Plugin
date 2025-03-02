@@ -1,0 +1,20 @@
+{
+  "name": "Collectible Tracker",
+  "dll_name": "Ty Collectible Tracker Plugin",
+  "description": "Tool to view current and total collectible counts overlaid onto the game.",
+  "version": "1.1.1",
+  "dependencies": [
+    {
+      "dep_name": "TygerMemory",
+      "dep_version": "1.0.3",
+      "dep_url": "https://github.com/xMcacutt/TygerMemory1/releases/download/1.0.3/TygerMemory.dll"
+    }
+  ],
+  "conflicts": [
+    "Archipelago Client",
+    "Tyger Utility",
+  ],
+  "author": "xMcacutt",
+  "download_url": "https://github.com/xMcacutt/Ty-Collectible-Tracker-Plugin/releases/latest/Ty.Collectible.Tracker.Plugin.zip"
+  "last_updated": "2025-03-02"
+}
